@@ -1,1 +1,20 @@
+pluginManagement {
+    repositories {
+        maven {
+            url = uri("https://artifactory.raiffeisen.ru/artifactory/repo1/")
+            credentials {
+                username "${raiffeisen_artifactory_user}"
+                password "${raiffeisen_artifactory_password}"
+            }
+        }
+        maven {
+            url = uri("https://artifactory.raiffeisen.ru/artifactory/plugins-gradle/")
+            credentials {
+                username "${raiffeisen_artifactory_user}"
+                password "${raiffeisen_artifactory_password}"
+            }
+        }
+    }
+}
+
 rootProject.name = 'ChipExchangerBot'

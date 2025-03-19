@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.4.0'
+    id 'org.springframework.boot' version '3.4.2'
     id 'io.spring.dependency-management' version '1.1.6'
 }
 
@@ -14,14 +14,33 @@ java {
 }
 
 repositories {
+    mavenLocal()
+    maven {
+        name = 'repo1'
+        url "https://artifactory.raiffeisen.ru/artifactory/repo1"
+        credentials {
+            username project.property("raiffeisen_artifactory_user")
+            password project.property("raiffeisen_artifactory_password")
+        }
+    }
+    maven {
+        name = 'repo1-cache'
+        url "https://artifactory.raiffeisen.ru/artifactory/repo1-cache"
+        credentials {
+            username project.property("raiffeisen_artifactory_user")
+            password project.property("raiffeisen_artifactory_password")
+        }
+    }
     mavenCentral()
 }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
-    implementation 'org.telegram:telegrambots-springboot-longpolling-starter:7.11.0'
-    implementation 'org.telegram:telegrambots-abilities:7.11.0'
-    implementation 'org.telegram:telegrambots-client:7.11.0'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.telegram:telegrambots-springboot-longpolling-starter:8.2.0'
+    implementation 'org.telegram:telegrambots-abilities:8.2.0'
+    implementation 'org.telegram:telegrambots-client:8.2.0'
+    implementation 'io.github.tronprotocol:trident:0.9.2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }

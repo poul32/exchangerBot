@@ -3,4 +3,4 @@ spring:
     name: "ChipExchangerBot"
 
 bot:
-  token: "***************************"
+  token: "**************"
